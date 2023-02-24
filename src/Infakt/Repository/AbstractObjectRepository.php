@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Infakt\Repository;
 
-use Doctrine\Common\Inflector\Inflector;
+
+use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\InflectorFactory;
 use Infakt\Collections\CollectionResult;
 use Infakt\Collections\Criteria;
 use Infakt\Exception\ApiException;
@@ -168,7 +170,8 @@ abstract class AbstractObjectRepository implements ObjectRepositoryInterface
      */
     protected function getServiceName(): string
     {
-        return Inflector::pluralize(Inflector::tableize(\substr($this->modelClass, \strrpos($this->modelClass, '\\') + 1)));
+        $inflector = InflectorFactory::create()->build();
+        return $inflector->pluralize($inflector->tableize(\substr($this->modelClass, \strrpos($this->modelClass, '\\') + 1)));
     }
 
     /**
