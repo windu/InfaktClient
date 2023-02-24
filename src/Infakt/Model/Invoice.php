@@ -458,7 +458,7 @@ class Invoice implements EntityInterface
     /**
      * @return Invoice
      */
-    public function setClientCompanyName(string $clientCompanyName): self
+    public function setClientCompanyName(?string $clientCompanyName): self
     {
         $this->clientCompanyName = $clientCompanyName;
 
