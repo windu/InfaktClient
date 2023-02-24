@@ -165,7 +165,7 @@ class Client implements EntityInterface
         return $this;
     }
 
-    public function getCompanyName(): string
+    public function getCompanyName(): ?string
     {
         return $this->companyName;
     }
